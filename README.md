@@ -1,9 +1,11 @@
 # FormField
 
-[![CI Status](http://img.shields.io/travis/WANG Jie/FormField.svg?style=flat)](https://travis-ci.org/WANG Jie/FormField)
+[![CI Status](http://img.shields.io/travis/WANGjieJacques/FormField.svg?style=flat)](https://travis-ci.org/WANG Jie/FormField)
 [![Version](https://img.shields.io/cocoapods/v/FormField.svg?style=flat)](http://cocoapods.org/pods/FormField)
 [![License](https://img.shields.io/cocoapods/l/FormField.svg?style=flat)](http://cocoapods.org/pods/FormField)
 [![Platform](https://img.shields.io/cocoapods/p/FormField.svg?style=flat)](http://cocoapods.org/pods/FormField)
+
+This CocoaPod simplify your implementation of table-view forms. it provides the ability to validate your input.
 
 ## Example
 
