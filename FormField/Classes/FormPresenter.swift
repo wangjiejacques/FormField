@@ -8,6 +8,14 @@
 
 import Foundation
 
+public protocol FormFieldDelegate: class {
+    func validateStateDidChange(isValid: Bool, errorMessage: String?)
+
+    func isAllFormFieldsValid() -> Bool
+
+    func formDidFinish()
+}
+
 public class FormPresenter: NSObject {
     var isValid = false
     public var validImageName: String?
@@ -20,10 +28,10 @@ public class FormPresenter: NSObject {
         isValid = true
         validation.validate(formField.text!, successHandler: {
             self.isValid = true
-            self.formDelegate?.didValidateStateChanged(true, errorMessage: nil)
+            self.formDelegate?.validateStateDidChange(true, errorMessage: nil)
         }) { (message) in
             self.isValid = false
-            self.formDelegate?.didValidateStateChanged(false, errorMessage: nil)
+            self.formDelegate?.validateStateDidChange(false, errorMessage: nil)
         }
     }
 }
@@ -36,13 +44,13 @@ extension FormPresenter: UITextFieldDelegate {
     public func textFieldDidEndEditing(textField: UITextField) {
         validation.validate(formField.text!, successHandler: {
             self.isValid = true
-            self.formDelegate?.didValidateStateChanged(true, errorMessage: nil)
+            self.formDelegate?.validateStateDidChange(true, errorMessage: nil)
             self.formField.show(validationImage: self.validImageName ?? "")
         }) { (message) in
             guard !self.formField.editing else { return }
             self.isValid = false
             self.formField.show(validationImage: self.invalidImageName ?? "")
-            self.formDelegate?.didValidateStateChanged(false, errorMessage: message)
+            self.formDelegate?.validateStateDidChange(false, errorMessage: message)
         }
     }
 
@@ -52,7 +60,7 @@ extension FormPresenter: UITextFieldDelegate {
             return true
         } else if formField.returnKeyType == .Go {
             formField.stopEditing()
-            guard formDelegate?.shouldFormFinish() ?? false else {
+            guard formDelegate?.isAllFormFieldsValid() ?? false else {
                 return false
             }
             formDelegate?.formDidFinish()

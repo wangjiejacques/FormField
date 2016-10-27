@@ -9,14 +9,6 @@
 import Foundation
 import UIKit
 
-public protocol FormFieldDelegate: class {
-    func didValidateStateChanged(isValid: Bool, errorMessage: String?)
-
-    func shouldFormFinish() -> Bool
-
-    func formDidFinish()
-}
-
 public class FormField: UITextField {
     var presenter: FormPresenter!
     var validationImageView: UIImageView!

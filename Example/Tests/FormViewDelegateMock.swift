@@ -14,15 +14,15 @@ class FormFieldDelegateMock: FormFieldDelegate {
     var errorMessage: String?
     var formDidFinishTimes = 0
 
-    var shouldFormFinishSuccess = false
+    var isAllFromValid = false
 
-    func didValidateStateChanged(isValid: Bool, errorMessage: String?) {
+    func validateStateDidChange(isValid: Bool, errorMessage: String?) {
         self.isValid = isValid
         self.errorMessage = errorMessage
     }
 
-    func shouldFormFinish() -> Bool {
-        return shouldFormFinishSuccess
+    func isAllFormFieldsValid() -> Bool {
+        return isAllFromValid
     }
 
     func formDidFinish() {
