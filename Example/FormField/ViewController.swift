@@ -58,7 +58,7 @@ extension ViewController: FormFieldDelegate {
 
     func formFieldWillValidate(_ formField: FormFieldProtocol) {
         if formField === passwordRepeatField {
-            
+            passwordRepeatValidation.password = passwordField.text
         }
     }
 }
