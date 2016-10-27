@@ -93,7 +93,7 @@ public class FormField: UITextField {
     private func commonInit() {
         presenter = FormPresenter()
         presenter.formField = self
-        presenter.validation = SimpleValidation()
+        presenter.validation = DefaultValidation(minLength: 0, invalidMessage: nil)
         delegate = presenter
 
         initValidationImage()

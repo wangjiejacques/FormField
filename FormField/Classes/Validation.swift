@@ -12,10 +12,19 @@ public protocol Validation: class {
     func validate(text: String, successHandler: () -> Void, failureHandler: (message: String?) -> Void)
 }
 
-public class SimpleValidation: Validation {
+public class DefaultValidation: Validation {
+
+    private var minLength: Int
+    private var invalidMessage: String?
+
+    init(minLength: Int, invalidMessage: String?) {
+        self.minLength = minLength
+        self.invalidMessage = invalidMessage
+    }
+
     public func validate(text: String, successHandler: () -> Void, failureHandler: (message: String?) -> Void) {
-        guard text.characters.count > 0 else {
-            failureHandler(message: "输入不能为空")
+        guard text.characters.count >= minLength else {
+            failureHandler(message: invalidMessage)
             return
         }
         successHandler()
