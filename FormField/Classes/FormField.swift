@@ -26,7 +26,7 @@ public class FormField: UITextField {
     /// one pixel height line in the bottom of the form field.
     public var bottomLine: UIView!
     /// if the form field's return type is `next`, when you clik `next`, the nextForm will become firstResponder.
-    public weak var nextForm: FormField?
+    public weak var nextField: FormField?
 
     private var padding: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 0)
@@ -157,7 +157,7 @@ extension FormField: FormFieldProtocol {
     }
 
     public func editNextForm() {
-        nextForm?.becomeFirstResponder()
+        nextField?.becomeFirstResponder()
     }
 
     public func stopEditing() {
