@@ -16,7 +16,7 @@ class FormFieldDelegateMock: FormFieldDelegate {
 
     var isAllFromValid = false
 
-    func validateStateDidChange(isValid: Bool, errorMessage: String?) {
+    func validateStateDidChange(_ isValid: Bool, errorMessage: String?) {
         self.isValid = isValid
         self.errorMessage = errorMessage
     }
@@ -29,7 +29,7 @@ class FormFieldDelegateMock: FormFieldDelegate {
         self.formDidFinishWasCalled = true
     }
 
-    func formFieldWillValidate(formField: FormFieldProtocol) {
+    func formFieldWillValidate(_ formField: FormFieldProtocol) {
 
     }
 }

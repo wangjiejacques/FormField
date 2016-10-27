@@ -9,22 +9,22 @@
 import Foundation
 
 public protocol Validation: class {
-    func validate(text: String, successHandler: () -> Void, failureHandler: (message: String?) -> Void)
+    func validate(_ text: String, successHandler: () -> Void, failureHandler: (_ message: String?) -> Void)
 }
 
-public class DefaultValidation: Validation {
+open class DefaultValidation: Validation {
 
-    private var minLength: Int
-    private var invalidMessage: String?
+    fileprivate var minLength: Int
+    fileprivate var invalidMessage: String?
 
     public init(minLength: Int, invalidMessage: String?) {
         self.minLength = minLength
         self.invalidMessage = invalidMessage
     }
 
-    public func validate(text: String, successHandler: () -> Void, failureHandler: (message: String?) -> Void) {
+    open func validate(_ text: String, successHandler: () -> Void, failureHandler: (_ message: String?) -> Void) {
         guard text.characters.count >= minLength else {
-            failureHandler(message: invalidMessage)
+            failureHandler(invalidMessage)
             return
         }
         successHandler()

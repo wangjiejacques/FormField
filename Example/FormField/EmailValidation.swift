@@ -10,15 +10,15 @@ import Foundation
 import FormField
 
 class EmailValidation: Validation {
-    private let invalidMessage: String?
+    fileprivate let invalidMessage: String?
 
     init(invalidMessage: String?) {
         self.invalidMessage = invalidMessage
     }
     
-    func validate(text: String, successHandler: () -> Void, failureHandler: (message: String?) -> Void) {
+    func validate(_ text: String, successHandler: () -> Void, failureHandler: (_ message: String?) -> Void) {
         guard text.isEmail else {
-            failureHandler(message: invalidMessage)
+            failureHandler(invalidMessage)
             return
         }
         successHandler()

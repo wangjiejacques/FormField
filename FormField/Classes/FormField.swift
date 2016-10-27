@@ -11,51 +11,51 @@ import UIKit
 
 
 public protocol FormFieldDelegate: class {
-    func validateStateDidChange(isValid: Bool, errorMessage: String?)
+    func validateStateDidChange(_ isValid: Bool, errorMessage: String?)
 
     func isAllFormFieldsValid() -> Bool
 
     func formDidFinish()
 
-    func formFieldWillValidate(formField: FormFieldProtocol)
+    func formFieldWillValidate(_ formField: FormFieldProtocol)
 }
 
-public class FormField: UITextField {
+open class FormField: UITextField {
     var presenter: FormPresenter!
     var validationImageView: UIImageView!
     /// one pixel height line in the bottom of the form field.
-    public var bottomLine: UIView!
+    open var bottomLine: UIView!
     /// if the form field's return type is `next`, when you clik `next`, the nextForm will become firstResponder.
-    public weak var nextField: FormField?
+    open weak var nextField: FormField?
 
-    private var padding: UIEdgeInsets {
+    fileprivate var padding: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 0)
     }
-    private var leftImageView: UIImageView!
+    fileprivate var leftImageView: UIImageView!
 
     /// CGFloat not work here.
-    @IBInspectable public var leftPadding: NSString! = "4"
-    @IBInspectable public var leftImage: String! {
+    @IBInspectable open var leftPadding: NSString! = "4"
+    @IBInspectable open var leftImage: String! {
         didSet {
             leftImageView = UIImageView()
-            leftImageView.contentMode = .Center
+            leftImageView.contentMode = .center
             leftImageView.image = UIImage(named: leftImage)
-            leftViewMode = .Always
+            leftViewMode = .always
             leftView = leftImageView
         }
     }
-    @IBInspectable public var validImage: String! {
+    @IBInspectable open var validImage: String! {
         didSet {
             presenter.validImageName = validImage
         }
     }
-    @IBInspectable public var invalidImage: String! {
+    @IBInspectable open var invalidImage: String! {
         didSet {
             presenter.invalidImageName = invalidImage
         }
     }
 
-    public weak var formDelegate: FormFieldDelegate? {
+    open weak var formDelegate: FormFieldDelegate? {
         set {
             presenter.formDelegate = newValue
         }
@@ -63,7 +63,7 @@ public class FormField: UITextField {
             return presenter.formDelegate
         }
     }
-    public var validation: Validation {
+    open var validation: Validation {
         get {
             return presenter.validation
         }
@@ -71,7 +71,7 @@ public class FormField: UITextField {
             presenter.validation = newValue
         }
     }
-    public var isValid: Bool {
+    open var isValid: Bool {
         return presenter.isValid
     }
 
@@ -85,7 +85,7 @@ public class FormField: UITextField {
         commonInit()
     }
 
-    private func commonInit() {
+    fileprivate func commonInit() {
         presenter = FormPresenter()
         presenter.formField = self
         presenter.validation = DefaultValidation(minLength: 0, invalidMessage: nil)
@@ -94,49 +94,49 @@ public class FormField: UITextField {
         initValidationImage()
         initBottomLine()
 
-        clearButtonMode = .WhileEditing
+        clearButtonMode = .whileEditing
         enablesReturnKeyAutomatically = true
-        validationImageView.contentMode = .ScaleAspectFit
+        validationImageView.contentMode = .scaleAspectFit
 
     }
 
-    private func initValidationImage() {
+    fileprivate func initValidationImage() {
         validationImageView = UIImageView()
         validationImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(validationImageView)
-        validationImageView.hidden = true
-        let views = ["validationImageView": validationImageView]
-        let constraintsH = NSLayoutConstraint.constraintsWithVisualFormat("H:[validationImageView(20)]-4-|", options: [], metrics: nil, views: views)
-        let constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-[validationImageView]-|", options: [], metrics: nil, views: views)
+        validationImageView.isHidden = true
+        let views: [String: UIView] = ["validationImageView": validationImageView]
+        let constraintsH = NSLayoutConstraint.constraints(withVisualFormat: "H:[validationImageView(20)]-4-|", options: [], metrics: nil, views: views)
+        let constraintsV = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[validationImageView]-|", options: [], metrics: nil, views: views)
         addConstraints(constraintsH)
         addConstraints(constraintsV)
     }
 
-    private func initBottomLine() {
+    fileprivate func initBottomLine() {
         bottomLine = UIView()
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
         addSubview(bottomLine)
-        bottomLine.hidden = true
-        let views = ["bottomLine": bottomLine]
-        let constraintsH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-[bottomLine]-|", options: [], metrics: nil, views: views)
-        let constraintsV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bottomLine(1)]-|", options: [], metrics: nil, views: views)
+        bottomLine.isHidden = true
+        let views: [String: UIView] = ["bottomLine": bottomLine]
+        let constraintsH = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[bottomLine]-|", options: [], metrics: nil, views: views)
+        let constraintsV = NSLayoutConstraint.constraints(withVisualFormat: "V:[bottomLine(1)]-|", options: [], metrics: nil, views: views)
         addConstraints(constraintsH)
         addConstraints(constraintsV)
     }
 
-    public override func textRectForBounds(bounds: CGRect) -> CGRect {
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
 
-    public override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
+    open override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
 
-    public override func editingRectForBounds(bounds: CGRect) -> CGRect {
+    open override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, padding)
     }
 
-    public override func leftViewRectForBounds(bounds: CGRect) -> CGRect {
+    open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
         let size: CGSize = CGSize(width: padding.left, height: frame.height)
         return CGRect(origin: CGPoint(x: 0, y: 0), size: size)
     }
@@ -148,11 +148,11 @@ public class FormField: UITextField {
 
 extension FormField: FormFieldProtocol {
     public func hideValidationImage() {
-        validationImageView.hidden = true
+        validationImageView.isHidden = true
     }
 
     public func show(validationImage name: String) {
-        validationImageView.hidden = false
+        validationImageView.isHidden = false
         validationImageView.image = UIImage(named: name)
     }
 

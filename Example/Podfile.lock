@@ -1,22 +1,22 @@
 PODS:
-  - FormField (0.2.0)
-  - Nimble (4.1.0)
-  - Quick (0.9.3)
+  - FormField (0.2.1)
+  - Nimble (5.1.0)
+  - Quick (0.10.0)
 
 DEPENDENCIES:
   - FormField (from `../`)
-  - Nimble (~> 4.1.0)
-  - Quick (~> 0.9.3)
+  - Nimble
+  - Quick
 
 EXTERNAL SOURCES:
   FormField:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FormField: 1208e9452de2d231cfc6aa46dff58d18d04e1606
-  Nimble: 97a0a4cae5124c117115634b2d055d8c97d0af19
-  Quick: 13a2a2b19a5d8e3ed4fd0c36ee46597fd77ebf71
+  FormField: ff612f57663207779ed07603a433d2344af460df
+  Nimble: 5ea121a2eda60440287054cde077fc0ad22227b3
+  Quick: 5d290df1c69d5ee2f0729956dcf0fd9a30447eaa
 
-PODFILE CHECKSUM: 29e26a1456b2cf8a9221cd4963f2298979774b69
+PODFILE CHECKSUM: e4243aaac8f87e0accfe1e8dbcb30c573b7405bf
 
 COCOAPODS: 1.1.1

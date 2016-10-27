@@ -27,7 +27,7 @@ class ViewController: UITableViewController {
         emailField.validation = EmailValidation(invalidMessage: "Email not valid")
         passwordField.validation = DefaultValidation(minLength: 8, invalidMessage: "Password must be containt at least 8 chars")
         passwordRepeatField.validation = PasswordRepeatValidation(invalidMessage: "Password not correct")
-        for (index, field) in allFormFields.enumerate() {
+        for (index, field) in allFormFields.enumerated() {
             if index+1 < allFormFields.count {
                 field.nextField = allFormFields[index+1]
             }
@@ -44,19 +44,19 @@ class ViewController: UITableViewController {
 
 
 extension ViewController: FormFieldDelegate {
-    func validateStateDidChange(isValid: Bool, errorMessage: String?) {
+    func validateStateDidChange(_ isValid: Bool, errorMessage: String?) {
 
     }
 
     func isAllFormFieldsValid() -> Bool {
-        return allFormFields.reduce(true, combine: { $0 && $1.isValid })
+        return allFormFields.reduce(true, { $0 && $1.isValid })
     }
 
     func formDidFinish() {
         /// do signup or login
     }
 
-    func formFieldWillValidate(formField: FormFieldProtocol) {
+    func formFieldWillValidate(_ formField: FormFieldProtocol) {
         if formField === passwordRepeatField {
             
         }

@@ -84,8 +84,8 @@ class FormSpec: QuickSpec {
 
             context("When the user click the return key and the form field is not the last one") {
                 beforeEach {
-                    formField.returnKeyType = .Next
-                    formPresenter.textFieldShouldReturn(UITextField())
+                    formField.returnKeyType = .next
+                    _ = formPresenter.textFieldShouldReturn(UITextField())
                 }
                 it("Then the next form field should begin editing") {
                     expect(formField.nextFormTimes).to(equal(1))
@@ -93,9 +93,9 @@ class FormSpec: QuickSpec {
             }
             context("When the user click the return key, the form field is the last one and the form should finish") {
                 beforeEach {
-                    formField.returnKeyType = .Go
+                    formField.returnKeyType = .go
                     formFieldDelegate.isAllFromValid = true
-                    formPresenter.textFieldShouldReturn(UITextField())
+                    _ = formPresenter.textFieldShouldReturn(UITextField())
                 }
 
                 it("Then the next form field should not begin editing") {
@@ -105,9 +105,9 @@ class FormSpec: QuickSpec {
             }
             context("When the user click the return key, the form is the last one and the form should not finish") {
                 beforeEach {
-                    formField.returnKeyType = .Go
+                    formField.returnKeyType = .go
                     formFieldDelegate.isAllFromValid = false
-                    formPresenter.textFieldShouldReturn(UITextField())
+                    _ = formPresenter.textFieldShouldReturn(UITextField())
                 }
 
                 it("Then the next form field should not begin editing") {

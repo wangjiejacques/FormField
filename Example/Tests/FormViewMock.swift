@@ -17,7 +17,7 @@ class FormFieldMock: FormFieldProtocol {
     var editing: Bool = false
     var validationImageName: String?
 
-    var returnKeyType: UIReturnKeyType = .Default
+    var returnKeyType: UIReturnKeyType = .default
 
     func stopEditing() {
         self.stopEditingTimes += 1

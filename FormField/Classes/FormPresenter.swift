@@ -10,20 +10,20 @@ import Foundation
 
 
 extension FormFieldDelegate {
-    func formFieldWillValidate(formField: FormFieldProtocol) {
+    func formFieldWillValidate(_ formField: FormFieldProtocol) {
 
     }
 }
 
-public class FormPresenter: NSObject {
+open class FormPresenter: NSObject {
     var isValid = false
-    public var validImageName: String?
-    public var invalidImageName: String?
-    public weak var formField: FormFieldProtocol!
-    public weak var formDelegate: FormFieldDelegate?
-    public var validation: Validation!
+    open var validImageName: String?
+    open var invalidImageName: String?
+    open weak var formField: FormFieldProtocol!
+    open weak var formDelegate: FormFieldDelegate?
+    open var validation: Validation!
 
-    public func checkValidity() {
+    open func checkValidity() {
         isValid = true
         formDelegate?.formFieldWillValidate(self.formField)
         validation.validate(formField.text!, successHandler: {
@@ -37,11 +37,11 @@ public class FormPresenter: NSObject {
 }
 
 extension FormPresenter: UITextFieldDelegate {
-    public func textFieldDidBeginEditing(textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         formField.hideValidationImage()
     }
 
-    public func textFieldDidEndEditing(textField: UITextField) {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
         formDelegate?.formFieldWillValidate(formField)
         validation.validate(formField.text!, successHandler: {
             self.isValid = true
@@ -55,11 +55,11 @@ extension FormPresenter: UITextFieldDelegate {
         }
     }
 
-    public func textFieldShouldReturn(textField: UITextField) -> Bool {
-        if formField.returnKeyType == .Next {
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if formField.returnKeyType == .next {
             formField.editNextForm()
             return true
-        } else if formField.returnKeyType == .Go {
+        } else if formField.returnKeyType == .go {
             formField.stopEditing()
             guard formDelegate?.isAllFormFieldsValid() ?? false else {
                 return false

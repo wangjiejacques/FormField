@@ -13,11 +13,11 @@ class ValidationMock: Validation {
 
     var shouldValid: Bool = false
 
-    func validate(text: String, successHandler: () -> Void, failureHandler: (message: String?) -> Void) {
+    func validate(_ text: String, successHandler: () -> Void, failureHandler: (_ message: String?) -> Void) {
         if shouldValid {
             successHandler()
         } else {
-            failureHandler(message: "")
+            failureHandler("")
         }
     }
 }
