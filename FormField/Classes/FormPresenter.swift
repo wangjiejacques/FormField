@@ -14,6 +14,14 @@ public protocol FormFieldDelegate: class {
     func isAllFormFieldsValid() -> Bool
 
     func formDidFinish()
+
+    func formFieldWillValidate(formField: FormFieldProtocol)
+}
+
+extension FormFieldDelegate {
+    func formFieldWillValidate(formField: FormFieldProtocol) {
+
+    }
 }
 
 public class FormPresenter: NSObject {
@@ -26,6 +34,7 @@ public class FormPresenter: NSObject {
 
     public func checkValidity() {
         isValid = true
+        formDelegate?.formFieldWillValidate(self.formField)
         validation.validate(formField.text!, successHandler: {
             self.isValid = true
             self.formDelegate?.validateStateDidChange(true, errorMessage: nil)
@@ -42,6 +51,7 @@ extension FormPresenter: UITextFieldDelegate {
     }
 
     public func textFieldDidEndEditing(textField: UITextField) {
+        formDelegate?.formFieldWillValidate(formField)
         validation.validate(formField.text!, successHandler: {
             self.isValid = true
             self.formDelegate?.validateStateDidChange(true, errorMessage: nil)
