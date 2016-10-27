@@ -1,6 +1,6 @@
 //
 //  EmailValidation.swift
-//  Pods
+//  FormField
 //
 //  Created by WANG Jie on 27/10/2016.
 //
