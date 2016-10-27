@@ -17,7 +17,7 @@ public class DefaultValidation: Validation {
     private var minLength: Int
     private var invalidMessage: String?
 
-    init(minLength: Int, invalidMessage: String?) {
+    public init(minLength: Int, invalidMessage: String?) {
         self.minLength = minLength
         self.invalidMessage = invalidMessage
     }

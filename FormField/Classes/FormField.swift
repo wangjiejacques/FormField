@@ -9,6 +9,17 @@
 import Foundation
 import UIKit
 
+
+public protocol FormFieldDelegate: class {
+    func validateStateDidChange(isValid: Bool, errorMessage: String?)
+
+    func isAllFormFieldsValid() -> Bool
+
+    func formDidFinish()
+
+    func formFieldWillValidate(formField: FormFieldProtocol)
+}
+
 public class FormField: UITextField {
     var presenter: FormPresenter!
     var validationImageView: UIImageView!
@@ -17,36 +28,20 @@ public class FormField: UITextField {
     /// if the form field's return type is `next`, when you clik `next`, the nextForm will become firstResponder.
     public weak var nextForm: FormField?
 
-    private var padding = UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 0)
-    private var leftImageView: UIImageView!
-    private var leftLabel: UILabel!
-
-    @IBInspectable public var leftPadding: CGFloat! {
-        didSet {
-            padding.left = leftPadding
-        }
+    private var padding: UIEdgeInsets {
+        return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 0)
     }
+    private var leftImageView: UIImageView!
+
+    /// CGFloat not work here.
+    @IBInspectable public var leftPadding: NSString! = "4"
     @IBInspectable public var leftImage: String! {
         didSet {
-            guard leftText == nil else {
-                fatalError("You can not set both left image and left text")
-            }
             leftImageView = UIImageView()
             leftImageView.contentMode = .Center
             leftImageView.image = UIImage(named: leftImage)
             leftViewMode = .Always
             leftView = leftImageView
-        }
-    }
-    @IBInspectable public var leftText: String! {
-        didSet {
-            guard leftImage == nil else {
-                fatalError("You can not set both left image and left text")
-            }
-            leftLabel = UILabel()
-            leftLabel.text = leftText
-            leftViewMode = .Always
-            leftView = leftLabel
         }
     }
     @IBInspectable public var validImage: String! {
@@ -139,6 +134,11 @@ public class FormField: UITextField {
 
     public override func editingRectForBounds(bounds: CGRect) -> CGRect {
         return UIEdgeInsetsInsetRect(bounds, padding)
+    }
+
+    public override func leftViewRectForBounds(bounds: CGRect) -> CGRect {
+        var size: CGSize = CGSize(width: padding.left, height: frame.height)
+        return CGRect(origin: CGPoint(x: 0, y: 0), size: size)
     }
 
     func checkValidity() {

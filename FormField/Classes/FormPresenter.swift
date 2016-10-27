@@ -8,15 +8,6 @@
 
 import Foundation
 
-public protocol FormFieldDelegate: class {
-    func validateStateDidChange(isValid: Bool, errorMessage: String?)
-
-    func isAllFormFieldsValid() -> Bool
-
-    func formDidFinish()
-
-    func formFieldWillValidate(formField: FormFieldProtocol)
-}
 
 extension FormFieldDelegate {
     func formFieldWillValidate(formField: FormFieldProtocol) {
@@ -27,7 +18,7 @@ extension FormFieldDelegate {
 public class FormPresenter: NSObject {
     var isValid = false
     public var validImageName: String?
-    public var invalidImageName: String? = "icon_error"
+    public var invalidImageName: String?
     public weak var formField: FormFieldProtocol!
     public weak var formDelegate: FormFieldDelegate?
     public var validation: Validation!
