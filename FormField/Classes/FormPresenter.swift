@@ -27,7 +27,7 @@ extension FormFieldDelegate {
 public class FormPresenter: NSObject {
     var isValid = false
     public var validImageName: String?
-    public var invalidImageName: String?
+    public var invalidImageName: String? = "icon_error"
     public weak var formField: FormFieldProtocol!
     public weak var formDelegate: FormFieldDelegate?
     public var validation: Validation!

@@ -49,6 +49,16 @@ public class FormField: UITextField {
             leftView = leftLabel
         }
     }
+    @IBInspectable public var validImageName: String! {
+        didSet {
+            presenter.validImageName = validImageName
+        }
+    }
+    @IBInspectable public var invalidImageName: String! {
+        didSet {
+            presenter.invalidImageName = invalidImageName
+        }
+    }
 
     public weak var formDelegate: FormFieldDelegate? {
         set {
@@ -91,7 +101,6 @@ public class FormField: UITextField {
 
         clearButtonMode = .WhileEditing
         enablesReturnKeyAutomatically = true
-        validationImageView.image = UIImage(named: "icon_error")
         validationImageView.contentMode = .ScaleAspectFit
 
     }
