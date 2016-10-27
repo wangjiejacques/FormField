@@ -12,7 +12,7 @@ import FormField
 class FormFieldDelegateMock: FormFieldDelegate {
     var isValid: Bool?
     var errorMessage: String?
-    var formDidFinishTimes = 0
+    var formDidFinishWasCalled = false
 
     var isAllFromValid = false
 
@@ -26,6 +26,10 @@ class FormFieldDelegateMock: FormFieldDelegate {
     }
 
     func formDidFinish() {
-        self.formDidFinishTimes += 1
+        self.formDidFinishWasCalled = true
+    }
+
+    func formFieldWillValidate(formField: FormFieldProtocol) {
+
     }
 }

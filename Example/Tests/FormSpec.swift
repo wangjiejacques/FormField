@@ -100,7 +100,7 @@ class FormSpec: QuickSpec {
 
                 it("Then the next form field should not begin editing") {
                     expect(formField.nextFormTimes).to(equal(0))
-                    expect(formFieldDelegate.formDidFinishTimes).to(equal(1))
+                    expect(formFieldDelegate.formDidFinishWasCalled).to(equal(true))
                 }
             }
             context("When the user click the return key, the form is the last one and the form should not finish") {
@@ -112,7 +112,7 @@ class FormSpec: QuickSpec {
 
                 it("Then the next form field should not begin editing") {
                     expect(formField.nextFormTimes).to(equal(0))
-                    expect(formFieldDelegate.formDidFinishTimes).to(equal(0))
+                    expect(formFieldDelegate.formDidFinishWasCalled).to(equal(false))
                 }
             }
         }
