@@ -26,21 +26,21 @@ public class FormField: UITextField {
             padding.left = leftPadding
         }
     }
-    @IBInspectable public var leftImageName: String! {
+    @IBInspectable public var leftImage: String! {
         didSet {
             guard leftText == nil else {
                 fatalError("You can not set both left image and left text")
             }
             leftImageView = UIImageView()
             leftImageView.contentMode = .Center
-            leftImageView.image = UIImage(named: leftImageName)
+            leftImageView.image = UIImage(named: leftImage)
             leftViewMode = .Always
             leftView = leftImageView
         }
     }
     @IBInspectable public var leftText: String! {
         didSet {
-            guard leftImageName == nil else {
+            guard leftImage == nil else {
                 fatalError("You can not set both left image and left text")
             }
             leftLabel = UILabel()
@@ -49,14 +49,14 @@ public class FormField: UITextField {
             leftView = leftLabel
         }
     }
-    @IBInspectable public var validImageName: String! {
+    @IBInspectable public var validImage: String! {
         didSet {
-            presenter.validImageName = validImageName
+            presenter.validImageName = validImage
         }
     }
-    @IBInspectable public var invalidImageName: String! {
+    @IBInspectable public var invalidImage: String! {
         didSet {
-            presenter.invalidImageName = invalidImageName
+            presenter.invalidImageName = invalidImage
         }
     }
 
