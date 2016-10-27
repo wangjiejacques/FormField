@@ -12,7 +12,7 @@ import UIKit
 public protocol FormFieldDelegate: class {
     func didValidateStateChanged(isValid: Bool, errorMessage: String?)
 
-    func shouldFormFinish() -> Bool
+    func isAllFormValid() -> Bool
 
     func formDidFinish()
 }

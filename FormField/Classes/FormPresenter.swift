@@ -52,7 +52,7 @@ extension FormPresenter: UITextFieldDelegate {
             return true
         } else if formField.returnKeyType == .Go {
             formField.stopEditing()
-            guard formDelegate?.shouldFormFinish() ?? false else {
+            guard formDelegate?.isAllFormValid() ?? false else {
                 return false
             }
             formDelegate?.formDidFinish()

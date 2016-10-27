@@ -94,7 +94,7 @@ class FormSpec: QuickSpec {
             context("When the user click the return key, the form field is the last one and the form should finish") {
                 beforeEach {
                     formField.returnKeyType = .Go
-                    formFieldDelegate.shouldFormFinishSuccess = true
+                    formFieldDelegate.isAllFromValid = true
                     formPresenter.textFieldShouldReturn(UITextField())
                 }
 
@@ -106,7 +106,7 @@ class FormSpec: QuickSpec {
             context("When the user click the return key, the form is the last one and the form should not finish") {
                 beforeEach {
                     formField.returnKeyType = .Go
-                    formFieldDelegate.shouldFormFinishSuccess = false
+                    formFieldDelegate.isAllFromValid = false
                     formPresenter.textFieldShouldReturn(UITextField())
                 }
 
