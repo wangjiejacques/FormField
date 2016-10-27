@@ -7,12 +7,32 @@
 //
 
 import UIKit
+import FormField
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
+
+    @IBOutlet weak var firstnameField: FormField!
+    @IBOutlet weak var emailField: FormField!
+    @IBOutlet weak var passwordField: FormField!
+    @IBOutlet weak var passwordRepeatField: FormField!
+    var passwordRepeatValidation: PasswordRepeatValidation!
+
+    var allFormFields: [FormField] {
+        return [firstnameField, emailField, passwordField, passwordRepeatField]
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        firstnameField.validation = DefaultValidation(minLength: 4, invalidMessage: "Firstname must be contain at least 4 chars")
+        emailField.validation = EmailValidation(invalidMessage: "Email not valid")
+        passwordField.validation = DefaultValidation(minLength: 8, invalidMessage: "Password must be containt at least 8 chars")
+        passwordRepeatField.validation = PasswordRepeatValidation(invalidMessage: "Password not correct")
+        for (index, field) in allFormFields.enumerate() {
+            if index+1 < allFormFields.count {
+                field.nextField = allFormFields[index+1]
+            }
+            field.formDelegate = self
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,3 +42,23 @@ class ViewController: UIViewController {
 
 }
 
+
+extension ViewController: FormFieldDelegate {
+    func validateStateDidChange(isValid: Bool, errorMessage: String?) {
+
+    }
+
+    func isAllFormFieldsValid() -> Bool {
+        return allFormFields.reduce(true, combine: { $0 && $1.isValid })
+    }
+
+    func formDidFinish() {
+        /// do signup or login
+    }
+
+    func formFieldWillValidate(formField: FormFieldProtocol) {
+        if formField === passwordRepeatField {
+            
+        }
+    }
+}

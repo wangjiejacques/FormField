@@ -1,25 +1,23 @@
 //
-//  PasswordRepeatValidation.swift
-//  FormField
+//  EmailValidation.swift
+//  Pods
 //
 //  Created by WANG Jie on 27/10/2016.
-//  Copyright © 2016 CocoaPods. All rights reserved.
+//
 //
 
 import Foundation
 import FormField
 
-class PasswordRepeatValidation: Validation {
+class EmailValidation: Validation {
+    private let invalidMessage: String?
 
-    var password: String?
-    let invalidMessage: String
-
-    init(invalidMessage: String) {
+    init(invalidMessage: String?) {
         self.invalidMessage = invalidMessage
     }
     
     func validate(text: String, successHandler: () -> Void, failureHandler: (message: String?) -> Void) {
-        guard password == text else {
+        guard text.isEmail else {
             failureHandler(message: invalidMessage)
             return
         }

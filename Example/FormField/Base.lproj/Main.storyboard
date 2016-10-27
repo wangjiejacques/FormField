@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Hct-Jo-yOd">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
@@ -7,21 +7,146 @@
     </dependencies>
     <scenes>
         <!--View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <scene sceneID="DiQ-j3-Cbu">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="FormField_Example" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                <tableViewController id="Hct-Jo-yOd" customClass="ViewController" customModule="FormField_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="a9G-Lu-uze">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="moc-ic-ItF">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0bk-mE-sVl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0bk-mE-sVl" id="Ngv-DY-dTO">
+                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="rG5-MX-OTZ">
+                                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rG5-MX-OTZ" id="DcZ-Yk-cKa">
+                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="first name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qgI-eX-iGc" customClass="FormField" customModule="FormField">
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="first name"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftPadding" value="8"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="invalidImage" value="icon_error"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qgI-eX-iGc" firstAttribute="top" secondItem="DcZ-Yk-cKa" secondAttribute="top" id="Pgx-hl-CTC"/>
+                                                <constraint firstAttribute="trailing" secondItem="qgI-eX-iGc" secondAttribute="trailing" id="i70-IA-eGC"/>
+                                                <constraint firstItem="qgI-eX-iGc" firstAttribute="leading" secondItem="DcZ-Yk-cKa" secondAttribute="leading" id="qk5-uy-EDS"/>
+                                                <constraint firstAttribute="bottom" secondItem="qgI-eX-iGc" secondAttribute="bottom" id="uo6-A7-WaI"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Des-m9-jdf">
+                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Des-m9-jdf" id="WhD-zj-B0H">
+                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="email@example.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cNV-dZ-htd" customClass="FormField" customModule="FormField">
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="email"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftPadding" value="8"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="invalidImage" value="icon_error"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="cNV-dZ-htd" secondAttribute="trailing" id="31J-1L-psp"/>
+                                                <constraint firstItem="cNV-dZ-htd" firstAttribute="leading" secondItem="WhD-zj-B0H" secondAttribute="leading" id="7a5-2P-L7k"/>
+                                                <constraint firstItem="cNV-dZ-htd" firstAttribute="top" secondItem="WhD-zj-B0H" secondAttribute="top" id="kJa-dt-Bjq"/>
+                                                <constraint firstAttribute="bottom" secondItem="cNV-dZ-htd" secondAttribute="bottom" id="w4A-db-OLv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Lyn-tV-0Ja">
+                                        <rect key="frame" x="0.0" y="132" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lyn-tV-0Ja" id="buq-k8-5gE">
+                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="minimum 8 characters" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eUd-Cb-gKp" customClass="FormField" customModule="FormField">
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="next" secureTextEntry="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="password"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftPadding" value="8"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="invalidImage" value="icon_error"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="eUd-Cb-gKp" firstAttribute="top" secondItem="buq-k8-5gE" secondAttribute="top" id="Gwh-HS-SjP"/>
+                                                <constraint firstAttribute="trailing" secondItem="eUd-Cb-gKp" secondAttribute="trailing" id="Lwg-vM-qAg"/>
+                                                <constraint firstAttribute="bottom" secondItem="eUd-Cb-gKp" secondAttribute="bottom" id="uCb-AU-0O1"/>
+                                                <constraint firstItem="eUd-Cb-gKp" firstAttribute="leading" secondItem="buq-k8-5gE" secondAttribute="leading" id="wKZ-Dj-RkA"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="CD7-EV-Xn8">
+                                        <rect key="frame" x="0.0" y="176" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CD7-EV-Xn8" id="4xh-JY-XrI">
+                                            <frame key="frameInset" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="password repeat" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OQk-oa-BNu" customClass="FormField" customModule="FormField">
+                                                    <nil key="textColor"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftText" value="password repeat"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="leftPadding" value="8"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="invalidImage" value="icon_error"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="OQk-oa-BNu" secondAttribute="bottom" id="2ek-mz-j6O"/>
+                                                <constraint firstItem="OQk-oa-BNu" firstAttribute="top" secondItem="4xh-JY-XrI" secondAttribute="top" id="Q9x-Fk-M1f"/>
+                                                <constraint firstAttribute="trailing" secondItem="OQk-oa-BNu" secondAttribute="trailing" id="yqe-LA-PW8"/>
+                                                <constraint firstItem="OQk-oa-BNu" firstAttribute="leading" secondItem="4xh-JY-XrI" secondAttribute="leading" id="zYa-li-QJJ"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="Hct-Jo-yOd" id="1Zm-HA-SFq"/>
+                            <outlet property="delegate" destination="Hct-Jo-yOd" id="tOD-Yl-qPh"/>
+                        </connections>
+                    </tableView>
+                    <connections>
+                        <outlet property="emailField" destination="cNV-dZ-htd" id="Bb6-YZ-cCp"/>
+                        <outlet property="firstnameField" destination="qgI-eX-iGc" id="NyI-Xa-AdA"/>
+                        <outlet property="passwordField" destination="eUd-Cb-gKp" id="VwF-VL-wk5"/>
+                        <outlet property="passwordRepeatField" destination="OQk-oa-BNu" id="FBY-IK-f7K"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ya-jg-wE6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="18" y="160"/>
         </scene>
     </scenes>
 </document>

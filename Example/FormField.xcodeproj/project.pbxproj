@@ -12,6 +12,8 @@
 		607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 607FACD91AFB9204008FA782 /* Main.storyboard */; };
 		607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDC1AFB9204008FA782 /* Images.xcassets */; };
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
+		A0135CBB1DC2086300D6DC11 /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0135CBA1DC2086300D6DC11 /* EmailValidation.swift */; };
+		A08C84F01DC22D0100C8E481 /* PasswordRepeatValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A08C84EF1DC22D0100C8E481 /* PasswordRepeatValidation.swift */; };
 		A0A5E5371DBE5A2A0006F3DA /* FormSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E52F1DBE556A0006F3DA /* FormSpec.swift */; };
 		A0A5E5381DBE5A310006F3DA /* FormViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E5301DBE556A0006F3DA /* FormViewDelegateMock.swift */; };
 		A0A5E5391DBE5A310006F3DA /* FormViewMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0A5E5311DBE556A0006F3DA /* FormViewMock.swift */; };
@@ -46,6 +48,8 @@
 		77011B218B3A4C6B0F1CCA16 /* Pods-FormField_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormField_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FormField_Tests/Pods-FormField_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		889381A65DF87595FE608CA6 /* Pods-FormField_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormField_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-FormField_Example/Pods-FormField_Example.release.xcconfig"; sourceTree = "<group>"; };
 		9A9E48B202069E46E1C89D00 /* Pods-FormField_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormField_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FormField_Tests/Pods-FormField_Tests.release.xcconfig"; sourceTree = "<group>"; };
+		A0135CBA1DC2086300D6DC11 /* EmailValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
+		A08C84EF1DC22D0100C8E481 /* PasswordRepeatValidation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasswordRepeatValidation.swift; sourceTree = "<group>"; };
 		A0A5E52F1DBE556A0006F3DA /* FormSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormSpec.swift; sourceTree = "<group>"; };
 		A0A5E5301DBE556A0006F3DA /* FormViewDelegateMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewDelegateMock.swift; sourceTree = "<group>"; };
 		A0A5E5311DBE556A0006F3DA /* FormViewMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormViewMock.swift; sourceTree = "<group>"; };
@@ -101,6 +105,8 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				A08C84EF1DC22D0100C8E481 /* PasswordRepeatValidation.swift */,
+				A0135CBA1DC2086300D6DC11 /* EmailValidation.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -370,6 +376,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A08C84F01DC22D0100C8E481 /* PasswordRepeatValidation.swift in Sources */,
+				A0135CBB1DC2086300D6DC11 /* EmailValidation.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
