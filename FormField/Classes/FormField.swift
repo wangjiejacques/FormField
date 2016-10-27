@@ -137,7 +137,7 @@ public class FormField: UITextField {
     }
 
     public override func leftViewRectForBounds(bounds: CGRect) -> CGRect {
-        var size: CGSize = CGSize(width: padding.left, height: frame.height)
+        let size: CGSize = CGSize(width: padding.left, height: frame.height)
         return CGRect(origin: CGPoint(x: 0, y: 0), size: size)
     }
 
