@@ -91,6 +91,7 @@ open class FormField: UITextField {
         presenter.validation = DefaultValidation(minLength: 0, invalidMessage: nil)
         delegate = presenter
 
+        layoutMargins = UIEdgeInsets.zero
         initValidationImage()
         initBottomLine()
 
