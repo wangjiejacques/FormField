@@ -31,13 +31,15 @@ class FormSpec: QuickSpec {
                 formPresenter.validation = validation
             }
             context("When check the validation of a form field") {
-                context("When the form field is valid") {
+                context("When the form field is valid, all formFields is not valid") {
                     beforeEach {
                         validation.shouldValid = true
+                        formFieldDelegate.isAllFromValid = false
                         formPresenter.checkValidity()
                     }
                     it("Then the validate state of the form delegate should be true") {
                         expect(formFieldDelegate.isValid).to(beTrue())
+                        expect(formFieldDelegate.allFormFieldsIsValid).to(beFalse())
                     }
                 }
                 context("When the form field is not valid") {
@@ -47,6 +49,7 @@ class FormSpec: QuickSpec {
                     }
                     it("Then the validate state of the form delegate should be false") {
                         expect(formFieldDelegate.isValid).to(beFalse())
+                        expect(formFieldDelegate.allFormFieldsIsValid).to(beFalse())
                     }
                 }
             }

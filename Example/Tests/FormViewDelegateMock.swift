@@ -10,15 +10,21 @@ import Foundation
 import FormField
 
 class FormFieldDelegateMock: FormFieldDelegate {
-    var isValid: Bool?
-    var errorMessage: String?
-    var formDidFinishWasCalled = false
 
+
+    var isValid: Bool?
+    var invalidMessage: String?
+    var formDidFinishWasCalled = false
+    var allFormFieldsIsValid: Bool?
     var isAllFromValid = false
 
-    func validateStateDidChange(_ isValid: Bool, errorMessage: String?) {
+    func formFieldValidate(didChangeTo isValid: Bool, invalidMessage: String?) {
         self.isValid = isValid
-        self.errorMessage = errorMessage
+        self.invalidMessage = invalidMessage
+    }
+
+    func allFormFieldsValidate(didChangeTo isValid: Bool) {
+        allFormFieldsIsValid = isValid
     }
 
     func isAllFormFieldsValid() -> Bool {

@@ -44,9 +44,14 @@ class ViewController: UITableViewController {
 
 
 extension ViewController: FormFieldDelegate {
-    func validateStateDidChange(_ isValid: Bool, errorMessage: String?) {
+    func allFormFieldsValidate(didChangeTo isValid: Bool) {
+        
+    }
+
+    func formFieldValidate(didChangeTo isValid: Bool, invalidMessage: String?) {
 
     }
+
 
     func isAllFormFieldsValid() -> Bool {
         return allFormFields.reduce(true, { $0 && $1.isValid })
