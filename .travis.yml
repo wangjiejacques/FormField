@@ -2,13 +2,16 @@
 # * http://www.objc.io/issue-6/travis-ci.html
 # * https://github.com/supermarin/xcpretty#usage
 
-osx_image: xcode7.3
+osx_image: xcode8
 language: objective-c
-# cache: cocoapods
-# podfile: Example/Podfile
-# before_install:
-# - gem install cocoapods # Since Travis is not always on latest version
-# - pod install --project-directory=Example
+cache: cocoapods
+podfile: Example/Podfile
+before_install:
+- gem install cocoapods # Since Travis is not always on latest version
+- pod update --project-directory=Example
 script:
-- set -o pipefail && xcodebuild test -workspace Example/FormField.xcworkspace -scheme FormField-Example -sdk iphonesimulator9.3 ONLY_ACTIVE_ARCH=NO | xcpretty
-- pod lib lint
+- cd Example
+- xcodebuild -sdk iphonesimulator clean
+- xcodebuild test -workspace FormField.xcworkspace -scheme "FormField-Example" -sdk 'iphonesimulator' -destination 'platform=iOS Simulator,name=iPhone 7,OS=10.0' build test
+#after_success:
+# - bash <(curl -s https://codecov.io/bash) -t '3ca0d802-2b34-44d1-a907-3fefb7bc0160'
