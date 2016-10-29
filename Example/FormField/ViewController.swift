@@ -45,11 +45,11 @@ class ViewController: UITableViewController {
 
 extension ViewController: FormFieldDelegate {
     func allFormFieldsValidate(didChangeTo isValid: Bool) {
-        
+        // TODO you can disable, enable your sign up button
     }
 
     func formFieldValidate(didChangeTo isValid: Bool, invalidMessage: String?) {
-
+        // TODO show the invalid message
     }
 
 
