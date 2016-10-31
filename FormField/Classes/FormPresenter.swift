@@ -23,6 +23,11 @@ open class FormPresenter: NSObject {
     open weak var formDelegate: FormFieldDelegate?
     open var validation: Validation!
 
+    init(formField: FormFieldProtocol) {
+        self.formField = formField
+        NotificationCenter.default.addObserver(formField, selector: #selector(checkValidity), name: NSNotification.Name.UITextFieldTextDidChange, object: formField)
+    }
+
     open func checkValidity() {
         isValid = true
         formDelegate?.formFieldWillValidate(self.formField)
@@ -35,6 +40,10 @@ open class FormPresenter: NSObject {
             self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: nil)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
         }
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 }
 
@@ -58,6 +67,7 @@ extension FormPresenter: UITextFieldDelegate {
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
         }
     }
+
 
     public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if formField.returnKeyType == .next {

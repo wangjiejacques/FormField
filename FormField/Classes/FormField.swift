@@ -88,8 +88,7 @@ open class FormField: UITextField {
     }
 
     fileprivate func commonInit() {
-        presenter = FormPresenter()
-        presenter.formField = self
+        presenter = FormPresenter(formField: self)
         presenter.validation = DefaultValidation(minLength: 0, invalidMessage: nil)
         delegate = presenter
 
