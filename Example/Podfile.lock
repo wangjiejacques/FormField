@@ -1,5 +1,5 @@
 PODS:
-  - FormField (0.2.1)
+  - FormField (0.4.0)
   - Nimble (5.1.0)
   - Quick (0.10.0)
 
@@ -13,10 +13,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FormField: ff612f57663207779ed07603a433d2344af460df
+  FormField: d25379406f11cfa0105af3f7c85c4fc04a01566d
   Nimble: 5ea121a2eda60440287054cde077fc0ad22227b3
   Quick: 5d290df1c69d5ee2f0729956dcf0fd9a30447eaa
 
-PODFILE CHECKSUM: e4243aaac8f87e0accfe1e8dbcb30c573b7405bf
+PODFILE CHECKSUM: be34ec57b3bc3c6056fe84e10dcf8237ace1dd3e
 
 COCOAPODS: 1.1.1
