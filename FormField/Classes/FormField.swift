@@ -28,7 +28,7 @@ open class FormField: UITextField {
     /// one pixel height line in the bottom of the form field.
     open var bottomLine: UIView!
     /// if the form field's return type is `next`, when you clik `next`, the nextForm will become firstResponder.
-    open weak var nextField: FormField?
+    open weak var nextField: UITextField?
 
     fileprivate var padding: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 0)
