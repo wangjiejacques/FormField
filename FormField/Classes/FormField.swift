@@ -143,7 +143,7 @@ open class FormField: UITextField {
         return CGRect(origin: CGPoint(x: 0, y: 0), size: size)
     }
 
-    func checkValidity() {
+    open func checkValidity() {
         presenter.checkValidity()
     }
 }
