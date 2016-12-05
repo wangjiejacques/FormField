@@ -41,7 +41,6 @@ open class FormField: UITextField {
         didSet {
             guard delegate is FormPresenter else {
                 fatalError("don't use delegate, use forfield delegate")
-                return
             }
         }
     }
