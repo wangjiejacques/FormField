@@ -9,9 +9,13 @@
 import Foundation
 
 
-extension FormFieldDelegate {
+public extension FormFieldDelegate {
     func formFieldWillValidate(_ formField: FormFieldProtocol) {
 
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
     }
 }
 
@@ -23,12 +27,12 @@ open class FormPresenter: NSObject {
     open weak var formDelegate: FormFieldDelegate?
     open var validation: Validation!
 
-    init(formField: FormFieldProtocol) {
+    public init(formField: FormFieldProtocol) {
         self.formField = formField
         NotificationCenter.default.addObserver(formField, selector: #selector(checkValidity), name: NSNotification.Name.UITextFieldTextDidChange, object: formField)
     }
 
-    func checkValidity() {
+    open func checkValidity() {
         isValid = true
         formDelegate?.formFieldWillValidate(self.formField)
         validation.validate(formField.text!, successHandler: {
@@ -82,5 +86,10 @@ extension FormPresenter: UITextFieldDelegate {
             return true
         }
         return true
+    }
+
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        guard let fd = formDelegate else { return true }
+        return fd.textField(textField, shouldChangeCharactersIn: range, replacementString: string)
     }
 }

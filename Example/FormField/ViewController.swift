@@ -44,6 +44,8 @@ class ViewController: UITableViewController {
 
 
 extension ViewController: FormFieldDelegate {
+
+
     func allFormFieldsValidate(didChangeTo isValid: Bool) {
         // TODO you can disable, enable your sign up button
     }
@@ -66,4 +68,6 @@ extension ViewController: FormFieldDelegate {
             passwordRepeatValidation.password = passwordField.text
         }
     }
+
+    
 }

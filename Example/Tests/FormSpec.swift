@@ -14,7 +14,7 @@ import FormField
 class FormSpec: QuickSpec {
 
     override func spec() {
-        let formPresenter = FormPresenter()
+        var formPresenter: FormPresenter!
         var formField: FormFieldMock!
         var formFieldDelegate: FormFieldDelegateMock!
         var validation: ValidationMock!
@@ -22,7 +22,7 @@ class FormSpec: QuickSpec {
         describe("Given a user input a form field") {
             beforeEach {
                 formField = FormFieldMock()
-                formPresenter.formField = formField
+                formPresenter = FormPresenter(formField: formField)
 
                 formFieldDelegate = FormFieldDelegateMock()
                 formPresenter.formDelegate = formFieldDelegate

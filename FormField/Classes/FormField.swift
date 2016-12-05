@@ -20,6 +20,8 @@ public protocol FormFieldDelegate: class {
     func formDidFinish()
 
     func formFieldWillValidate(_ formField: FormFieldProtocol)
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool
 }
 
 open class FormField: UITextField {
@@ -34,6 +36,15 @@ open class FormField: UITextField {
         return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 0)
     }
     fileprivate var leftImageView: UIImageView!
+
+    open override var delegate: UITextFieldDelegate? {
+        didSet {
+            guard delegate is FormPresenter else {
+                fatalError("don't use delegate, use forfield delegate")
+                return
+            }
+        }
+    }
 
     /// CGFloat not work here.
     @IBInspectable open var leftPadding: NSString! = "4"
