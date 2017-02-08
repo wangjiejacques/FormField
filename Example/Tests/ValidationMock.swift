@@ -13,7 +13,7 @@ class ValidationMock: Validation {
 
     var shouldValid: Bool = false
 
-    func validate(_ text: String, successHandler: () -> Void, failureHandler: (_ message: String?) -> Void) {
+    func validate(_ text: String, successHandler: @escaping () -> Void, failureHandler: @escaping (_ message: String?) -> Void) {
         if shouldValid {
             successHandler()
         } else {

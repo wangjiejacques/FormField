@@ -16,7 +16,7 @@ class EmailValidation: Validation {
         self.invalidMessage = invalidMessage
     }
     
-    func validate(_ text: String, successHandler: () -> Void, failureHandler: (_ message: String?) -> Void) {
+    func validate(_ text: String, successHandler: @escaping () -> Void, failureHandler: @escaping (_ message: String?) -> Void) {
         guard text.isEmail else {
             failureHandler(invalidMessage)
             return
