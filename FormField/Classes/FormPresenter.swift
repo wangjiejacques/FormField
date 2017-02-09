@@ -54,6 +54,16 @@ open class FormPresenter: NSObject {
 extension FormPresenter: UITextFieldDelegate {
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         formField.hideValidationImage()
+        validation.validate(formField.text!, successHandler: {
+            self.isValid = true
+            self.formDelegate?.formFieldValidate(didChangeTo: true, invalidMessage: nil)
+            self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
+        }) { (message) in
+            guard !self.formField.text!.isEmpty else { return }
+            self.isValid = false
+            self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: message)
+            self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
+        }
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
@@ -65,9 +75,10 @@ extension FormPresenter: UITextFieldDelegate {
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
             guard !self.formField.editing else { return }
+            guard !self.formField.text!.isEmpty else { return }
             self.isValid = false
             self.formField.show(validationImage: self.invalidImageName ?? "")
-            self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: message)
+            self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: nil)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
         }
     }
