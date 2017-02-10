@@ -59,6 +59,7 @@ extension FormPresenter: UITextFieldDelegate {
             self.formDelegate?.formFieldValidate(didChangeTo: true, invalidMessage: nil)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
+            guard self.formField != nil else { return }
             guard !self.formField.text!.isEmpty else { return }
             self.isValid = false
             self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: message)
@@ -69,11 +70,13 @@ extension FormPresenter: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         formDelegate?.formFieldWillValidate(formField)
         validation.validate(formField.text!, successHandler: {
+            guard self.formField != nil else { return }
             self.isValid = true
             self.formDelegate?.formFieldValidate(didChangeTo: true, invalidMessage: nil)
             self.formField.show(validationImage: self.validImageName ?? "")
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
+            guard self.formField != nil else { return }
             guard !self.formField.editing else { return }
             guard !self.formField.text!.isEmpty else { return }
             self.isValid = false
