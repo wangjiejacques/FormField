@@ -59,11 +59,13 @@ extension FormPresenter: UITextFieldDelegate {
     public func textFieldDidEndEditing(_ textField: UITextField) {
         formDelegate?.formFieldWillValidate(formField)
         validation.validate(formField.text!, successHandler: {
+            guard self.formField != nil else { return }
             self.isValid = true
             self.formDelegate?.formFieldValidate(didChangeTo: true, invalidMessage: nil)
             self.formField.show(validationImage: self.validImageName ?? "")
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
+            guard self.formField != nil else { return }
             guard !self.formField.editing else { return }
             self.isValid = false
             self.formField.show(validationImage: self.invalidImageName ?? "")
