@@ -32,6 +32,9 @@ open class FormField: UITextField {
     /// if the form field's return type is `next`, when you clik `next`, the nextForm will become firstResponder.
     open weak var nextField: UITextField?
 
+    /// the rect for the left image, if the leftImageRect is nil, than the default rect is (0, 0, leftPadding, view.height).
+    open var leftImageRect: CGRect?
+
     fileprivate var padding: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 0)
     }
@@ -50,7 +53,7 @@ open class FormField: UITextField {
     @IBInspectable open var leftImage: String! {
         didSet {
             leftImageView = UIImageView()
-            leftImageView.contentMode = .center
+            leftImageView.contentMode = .scaleAspectFit
             leftImageView.image = UIImage(named: leftImage)
             leftViewMode = .always
             leftView = leftImageView
@@ -149,6 +152,9 @@ open class FormField: UITextField {
     }
 
     open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        if let leftImageRect = leftImageRect {
+            return leftImageRect
+        }
         let size: CGSize = CGSize(width: padding.left, height: frame.height)
         return CGRect(origin: CGPoint(x: 0, y: 0), size: size)
     }
