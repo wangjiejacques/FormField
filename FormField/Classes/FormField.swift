@@ -32,7 +32,7 @@ open class FormField: UITextField {
     /// if the form field's return type is `next`, when you clik `next`, the nextForm will become firstResponder.
     open weak var nextField: UITextField?
 
-    /// the rect for the left image, if the leftImageRect is nil, than the default rect is (0, 0, leftPadding, view.height).
+    /// the rect for the left image, if the leftImageRect is nil, than the default rect is (0, 0, 30, view.height).
     open var leftImageRect: CGRect?
 
     fileprivate var padding: UIEdgeInsets {
@@ -155,7 +155,7 @@ open class FormField: UITextField {
         if let leftImageRect = leftImageRect {
             return leftImageRect
         }
-        let size: CGSize = CGSize(width: padding.left, height: frame.height)
+        let size: CGSize = CGSize(width: 30, height: frame.height)
         return CGRect(origin: CGPoint(x: 0, y: 0), size: size)
     }
 
