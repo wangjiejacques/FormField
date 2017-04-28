@@ -38,10 +38,10 @@ open class FormPresenter: NSObject {
         validation.validate(formField.text!, successHandler: {
             self.isValid = true
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
-            self.formDelegate?.formFieldValidate(didChangeTo: true, invalidMessage: nil)
+            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: true, invalidMessage: nil)
         }) { (message) in
             self.isValid = false
-            self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: nil)
+            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: false, invalidMessage: nil)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
         }
     }
@@ -56,13 +56,13 @@ extension FormPresenter: UITextFieldDelegate {
         formField.hideValidationImage()
         validation.validate(formField.text!, successHandler: {
             self.isValid = true
-            self.formDelegate?.formFieldValidate(didChangeTo: true, invalidMessage: nil)
+            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: true, invalidMessage: nil)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
             guard self.formField != nil else { return }
             guard !self.formField.text!.isEmpty else { return }
             self.isValid = false
-            self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: message)
+            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: false, invalidMessage: message)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
         }
     }
@@ -72,7 +72,7 @@ extension FormPresenter: UITextFieldDelegate {
         validation.validate(formField.text!, successHandler: {
             guard self.formField != nil else { return }
             self.isValid = true
-            self.formDelegate?.formFieldValidate(didChangeTo: true, invalidMessage: nil)
+            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: true, invalidMessage: nil)
             self.formField.show(validationImage: self.validImageName ?? "")
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
@@ -81,7 +81,7 @@ extension FormPresenter: UITextFieldDelegate {
             guard !self.formField.text!.isEmpty else { return }
             self.isValid = false
             self.formField.show(validationImage: self.invalidImageName ?? "")
-            self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: nil)
+            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: false, invalidMessage: nil)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
         }
     }

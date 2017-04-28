@@ -50,7 +50,7 @@ extension ViewController: FormFieldDelegate {
         // TODO you can disable, enable your sign up button
     }
 
-    func formFieldValidate(didChangeTo isValid: Bool, invalidMessage: String?) {
+    func formFieldValidate(formField: FormFieldProtocol, didChangeTo isValid: Bool, invalidMessage: String?) {
         // TODO show the invalid message
     }
 

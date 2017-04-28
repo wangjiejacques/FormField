@@ -11,7 +11,7 @@ import UIKit
 
 
 public protocol FormFieldDelegate: class {
-    func formFieldValidate(didChangeTo isValid: Bool, invalidMessage: String?)
+    func formFieldValidate(formField: FormFieldProtocol, didChangeTo isValid: Bool, invalidMessage: String?)
 
     func allFormFieldsValidate(didChangeTo isValid: Bool)
 
