@@ -83,7 +83,7 @@ extension FormPresenter: UITextFieldDelegate {
             self.isValid = false
             guard !self.formField.text!.isEmpty || self.formField.showEmptyWarning else { return }
             self.formField.show(validationImage: self.invalidImageName ?? "")
-            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: false, invalidMessage: "")
+            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: false, invalidMessage: nil)
         }
     }
 

@@ -126,7 +126,7 @@ class FormSpec: QuickSpec {
                     formPresenter.textFieldDidEndEditing(UITextField())
                 }
                 it("Then the field is not valid, but it not shows warning") {
-                    expect(formFieldDelegate.invalidMessage).to(beNil())
+                    expect(formFieldDelegate.formFieldValidateCalled).to(beFalse())
                 }
             }
             context("When the field shows empty warning message and the text is empty") {
@@ -137,7 +137,7 @@ class FormSpec: QuickSpec {
                     formPresenter.textFieldDidEndEditing(UITextField())
                 }
                 it("Then the field is not valid, and it shows the warning") {
-                    expect(formFieldDelegate.invalidMessage).notTo(beNil())
+                    expect(formFieldDelegate.formFieldValidateCalled).to(beTrue())
                 }
             }
         }

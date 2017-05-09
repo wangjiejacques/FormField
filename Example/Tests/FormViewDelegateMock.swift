@@ -17,10 +17,12 @@ class FormFieldDelegateMock: FormFieldDelegate {
     var formDidFinishWasCalled = false
     var allFormFieldsIsValid: Bool?
     var isAllFromValid = false
+    var formFieldValidateCalled = false
 
     func formFieldValidate(formField: FormFieldProtocol, didChangeTo isValid: Bool, invalidMessage: String?) {
         self.isValid = isValid
         self.invalidMessage = invalidMessage
+        formFieldValidateCalled = true
     }
 
     func allFormFieldsValidate(didChangeTo isValid: Bool) {
