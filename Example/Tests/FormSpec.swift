@@ -118,6 +118,28 @@ class FormSpec: QuickSpec {
                     expect(formFieldDelegate.formDidFinishWasCalled).to(equal(false))
                 }
             }
+
+            context("When the field shows empty warning message and the text is empty.") {
+                beforeEach {
+                    validation.shouldValid = false
+                    formField.text = ""
+                    formPresenter.textFieldDidEndEditing(UITextField())
+                }
+                it("Then the field is not valid, but it not shows warning") {
+                    expect(formFieldDelegate.invalidMessage).to(beNil())
+                }
+            }
+            context("When the field shows empty warning message and the text is empty") {
+                beforeEach {
+                    validation.shouldValid = false
+                    formField.text = ""
+                    formField.showEmptyWarning = true
+                    formPresenter.textFieldDidEndEditing(UITextField())
+                }
+                it("Then the field is not valid, and it shows the warning") {
+                    expect(formFieldDelegate.invalidMessage).notTo(beNil())
+                }
+            }
         }
     }
 

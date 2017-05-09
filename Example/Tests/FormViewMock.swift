@@ -10,6 +10,7 @@ import Foundation
 import FormField
 
 class FormFieldMock: FormFieldProtocol {
+    var showEmptyWarning: Bool = false
     var stopEditingTimes = 0
     var validationImageHidden: Bool?
     var nextFormTimes = 0

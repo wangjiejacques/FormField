@@ -20,6 +20,8 @@ public protocol FormFieldProtocol: class {
 
     var returnKeyType: UIReturnKeyType { get set }
 
+    var showEmptyWarning: Bool { get set }
+
     func editNextForm()
 
     func stopEditing()

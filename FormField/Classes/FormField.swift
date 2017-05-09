@@ -35,6 +35,8 @@ open class FormField: UITextField {
     /// the rect for the left image, if the leftImageRect is nil, than the default rect is (0, 0, 30, view.height).
     open var leftImageRect: CGRect?
 
+    open var showEmptyWarning = false
+
     fileprivate var padding: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 0)
     }

@@ -60,7 +60,7 @@ extension FormPresenter: UITextFieldDelegate {
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
             guard self.formField != nil else { return }
-            guard !self.formField.text!.isEmpty else { return }
+            guard !self.formField.text!.isEmpty || self.formField.showEmptyWarning else { return }
             self.isValid = false
             self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: false, invalidMessage: message)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
@@ -78,11 +78,11 @@ extension FormPresenter: UITextFieldDelegate {
         }) { (message) in
             guard self.formField != nil else { return }
             guard !self.formField.editing else { return }
-            guard !self.formField.text!.isEmpty else { return }
-            self.isValid = false
-            self.formField.show(validationImage: self.invalidImageName ?? "")
-            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: false, invalidMessage: nil)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
+            self.isValid = false
+            guard !self.formField.text!.isEmpty || self.formField.showEmptyWarning else { return }
+            self.formField.show(validationImage: self.invalidImageName ?? "")
+            self.formDelegate?.formFieldValidate(formField: self.formField, didChangeTo: false, invalidMessage: "")
         }
     }
 
