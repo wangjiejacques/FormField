@@ -38,7 +38,7 @@ open class FormField: UITextField {
     open var showEmptyWarning = false
 
     fileprivate var padding: UIEdgeInsets {
-        return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 30)
     }
     open var leftImageView: UIImageView!
 
