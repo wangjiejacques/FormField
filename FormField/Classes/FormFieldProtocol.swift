@@ -16,7 +16,7 @@ public protocol FormFieldProtocol: class {
 
     var text: String? { get set }
 
-    var editing: Bool { get }
+    var isEditing: Bool { get }
 
     var returnKeyType: UIReturnKeyType { get set }
 

@@ -78,7 +78,7 @@ extension FormPresenter: UITextFieldDelegate {
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
             guard self.formField != nil else { return }
-            guard !self.formField.editing else { return }
+            guard !self.formField.isEditing else { return }
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
             self.isValid = false
             guard !self.formField.text!.isEmpty || self.formField.showEmptyWarning else { return }

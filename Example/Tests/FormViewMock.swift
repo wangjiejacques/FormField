@@ -15,7 +15,7 @@ class FormFieldMock: FormFieldProtocol {
     var validationImageHidden: Bool?
     var nextFormTimes = 0
     var text: String? = "test"
-    var editing: Bool = false
+    var isEditing: Bool = false
     var validationImageName: String?
 
     var returnKeyType: UIReturnKeyType = .default
