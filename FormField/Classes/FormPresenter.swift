@@ -27,9 +27,10 @@ open class FormPresenter: NSObject {
     open weak var formDelegate: FormFieldDelegate?
     open var validation: Validation!
 
-    public init(formField: FormFieldProtocol) {
+    public convenience init(formField: FormFieldProtocol) {
+        self.init()
         self.formField = formField
-        NotificationCenter.default.addObserver(formField, selector: #selector(checkValidity), name: NSNotification.Name.UITextFieldTextDidChange, object: formField)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkValidity), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
     }
 
     @objc open func checkValidity() {

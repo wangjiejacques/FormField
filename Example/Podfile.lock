@@ -10,7 +10,7 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   FormField:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
   FormField: 8af39ed03fef721fe30f9df9447ef93b04268424
@@ -19,4 +19,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: be34ec57b3bc3c6056fe84e10dcf8237ace1dd3e
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.3.1
