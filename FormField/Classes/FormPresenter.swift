@@ -32,7 +32,7 @@ open class FormPresenter: NSObject {
         NotificationCenter.default.addObserver(formField, selector: #selector(checkValidity), name: NSNotification.Name.UITextFieldTextDidChange, object: formField)
     }
 
-    open func checkValidity() {
+    @objc open func checkValidity() {
         isValid = true
         formDelegate?.formFieldWillValidate(self.formField)
         validation.validate(formField.text!, successHandler: {
