@@ -32,7 +32,7 @@ open class FormPresenter: NSObject {
         NotificationCenter.default.addObserver(formField, selector: #selector(checkValidity), name: NSNotification.Name.UITextFieldTextDidChange, object: formField)
     }
 
-    open func checkValidity() {
+    @objc open func checkValidity() {
         isValid = true
         formDelegate?.formFieldWillValidate(self.formField)
         validation.validate(formField.text!, successHandler: {
@@ -66,7 +66,7 @@ extension FormPresenter: UITextFieldDelegate {
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
         }) { (message) in
             guard self.formField != nil else { return }
-            guard !self.formField.editing else { return }
+            guard !self.formField.isEditing else { return }
             self.isValid = false
             self.formField.show(validationImage: self.invalidImageName ?? "")
             self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: message)
