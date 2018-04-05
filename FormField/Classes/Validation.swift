@@ -23,7 +23,7 @@ open class DefaultValidation: Validation {
     }
 
     open func validate(_ text: String, successHandler: @escaping () -> Void, failureHandler: @escaping (_ message: String?) -> Void) {
-        guard text.characters.count >= minLength else {
+        guard text.count >= minLength else {
             failureHandler(invalidMessage)
             return
         }

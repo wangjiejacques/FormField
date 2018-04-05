@@ -1,6 +1,6 @@
 PODS:
   - FormField (0.5.13)
-  - Nimble (7.0.2)
+  - Nimble (7.0.3)
   - Quick (1.2.0)
 
 DEPENDENCIES:
@@ -14,7 +14,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FormField: 8af39ed03fef721fe30f9df9447ef93b04268424
-  Nimble: bfe1f814edabba69ff145cb1283e04ed636a67f2
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
 PODFILE CHECKSUM: be34ec57b3bc3c6056fe84e10dcf8237ace1dd3e
