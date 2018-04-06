@@ -54,7 +54,7 @@ open class FormField: UITextField {
         didSet {
             leftImageView = UIImageView()
             leftImageView.contentMode = .scaleAspectFit
-            leftImageView.image = UIImage(named: leftImage)
+            leftImageView.image = UIImage(named: leftImage)?.withRenderingMode(.alwaysTemplate)
             leftViewMode = .always
             leftView = leftImageView
         }
