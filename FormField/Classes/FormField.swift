@@ -38,7 +38,7 @@ open class FormField: UITextField {
     fileprivate var padding: UIEdgeInsets {
         return UIEdgeInsets(top: 0, left: CGFloat(leftPadding.floatValue), bottom: 0, right: 30)
     }
-    fileprivate var leftImageView: UIImageView!
+    var leftImageView: UIImageView!
 
     open override var delegate: UITextFieldDelegate? {
         didSet {
@@ -54,7 +54,7 @@ open class FormField: UITextField {
         didSet {
             leftImageView = UIImageView()
             leftImageView.contentMode = .scaleAspectFit
-            leftImageView.image = UIImage(named: leftImage)?.withRenderingMode(.alwaysTemplate)
+            leftImageView.image = UIImage(named: leftImage)
             leftViewMode = .always
             leftView = leftImageView
         }
