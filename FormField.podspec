@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'FormField'
-  s.version          = '0.5.14'
+  s.version          = '0.5.15'
   s.summary          = 'Simple Form Field in Swift'
 
 # This description is used to generate tags and improve search results.
