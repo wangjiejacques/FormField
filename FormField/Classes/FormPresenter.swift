@@ -40,10 +40,12 @@ open class FormPresenter: NSObject {
             self.isValid = true
             self.formDelegate?.allFormFieldsValidate(didChangeTo: self.formDelegate?.isAllFormFieldsValid() ?? false)
             self.formDelegate?.formFieldValidate(didChangeTo: true, invalidMessage: nil)
+            self.formField.show(validationImage: self.validImageName ?? "")
         }) { (message) in
             self.isValid = false
             self.formDelegate?.formFieldValidate(didChangeTo: false, invalidMessage: nil)
             self.formDelegate?.allFormFieldsValidate(didChangeTo: false)
+            self.formField.show(validationImage: self.invalidImageName ?? "")
         }
     }
 

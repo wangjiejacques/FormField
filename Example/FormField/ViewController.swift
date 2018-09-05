@@ -68,6 +68,4 @@ extension ViewController: FormFieldDelegate {
             passwordRepeatValidation.password = passwordField.text
         }
     }
-
-    
 }
