@@ -30,7 +30,7 @@ open class FormPresenter: NSObject {
     public convenience init(formField: FormFieldProtocol) {
         self.init()
         self.formField = formField
-        NotificationCenter.default.addObserver(self, selector: #selector(checkValidity), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(checkValidity), name: UITextField.textDidChangeNotification, object: nil)
     }
 
     @objc open func checkValidity() {
